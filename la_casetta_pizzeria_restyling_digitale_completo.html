@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="it" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="color-scheme" content="only light">
+    <title>La Casetta Pizzeria | Porto Sant'Elpidio | Menù & Storia</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        casetta: {
+                            bordeaux: '#4A0E17',
+                            bordeauxDark: '#2D080E',
+                            gold: '#C9A477',
+                            goldHover: '#B38E61',
+                            crema: '#FDF8F2',
+                            cremaDark: '#F4ECE1',
+                            charcoal: '#1A1A1A',
+                            textMuted: '#6E5C54'
+                        }
+                    },
+                    fontFamily: {
+                        brand: ['Cinzel', 'serif'],
+                        serifHeading: ['Playfair Display', 'serif'],
+                        sans: ['Montserrat', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Personalizzazioni stilistiche e dettagli di micro-interazione */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #2D080E;
+            color: #FDF8F2;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .bg-curtain {
+            background: linear-gradient(180deg, rgba(45, 8, 14, 0.88) 0%, rgba(26, 26, 26, 0.95) 100%),
+                        url('https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat fixed;
+        }
+
+        .gold-border-gradient {
+            border-image: linear-gradient(to right, #C9A477, #FDF8F2, #C9A477) 1;
+        }
+
+        .glass-card {
+            background: rgba(74, 14, 23, 0.55);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(201, 164, 119, 0.25);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(201, 164, 119, 0.6);
+        }
+
+        .category-tab.active {
+            background-color: #C9A477;
+            color: #2D080E;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(201, 164, 119, 0.4);
+        }
+
+        /* Scrollbar personalizzata */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #2D080E;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #C9A477;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-casetta-gold selection:text-casetta-bordeauxDark">
+
+    <!-- NAVBAR FISSA DI NAVIGAZIONE -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-casetta-bordeauxDark/95 backdrop-blur-md border-b border-casetta-gold/20 px-4 lg:px-8 py-3 transition-all duration-300">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            
+            <!-- LOGO BRAND -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-full bg-casetta-bordeaux border-2 border-casetta-gold flex items-center justify-center text-casetta-gold font-brand font-bold text-lg shadow-md group-hover:scale-105 transition-transform">
+                    LC
+                </div>
+                <div>
+                    <span class="font-brand text-lg sm:text-xl font-extrabold tracking-wider text-casetta-gold block leading-none">LA CASETTA</span>
+                    <span class="text-[10px] text-casetta-crema/70 tracking-widest uppercase block mt-0.5">Pizzeria dal 1990</span>
+                </div>
+            </a>
+
+            <!-- LINK NAVIGAZIONE (DESKTOP) -->
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#storia" class="hover:text-casetta-gold transition-colors">La Storia</a>
+                <a href="#impasti" class="hover:text-casetta-gold transition-colors">Gli Impasti</a>
+                <a href="#menu" class="hover:text-casetta-gold transition-colors">Il Menù</a>
+                <a href="#contatti" class="hover:text-casetta-gold transition-colors">Contatti</a>
+            </div>
+
+            <!-- PULSANTE ORDINA O CHIAMA -->
+            <div class="flex items-center gap-3">
+                <a href="tel:+390734902181" class="bg-casetta-gold hover:bg-casetta-goldHover text-casetta-bordeauxDark font-bold px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm transition-all shadow-lg hover:shadow-casetta-gold/30 flex items-center gap-2">
+                    <i class="fa-solid fa-phone"></i>
+                    <span class="hidden sm:inline">Chiama per Asporto</span>
+                    <span class="sm:hidden">Chiama</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO / HEADER SECTION -->
+    <header class="relative min-h-screen pt-28 pb-16 flex items-center justify-center bg-curtain px-4">
+        <div class="relative z-10 text-center max-w-4xl mx-auto">
+            
+            <div class="inline-flex items-center gap-2 bg-casetta-gold/15 border border-casetta-gold/30 px-4 py-1.5 rounded-full text-casetta-gold text-xs font-semibold tracking-wider uppercase mb-6 backdrop-blur-md">
+                <i class="fa-solid fa-location-dot"></i> Porto Sant'Elpidio (FM)
+            </div>
+
+            <h1 class="font-brand text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-casetta-crema mb-6 leading-tight">
+                PICCOLA FUORI,<br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-casetta-gold via-amber-200 to-casetta-gold">
+                    GRANDE NELLA STORIA.
+                </span>
+            </h1>
+
+            <p class="text-casetta-crema/90 text-base sm:text-xl font-light max-w-2xl mx-auto mb-10 leading-relaxed">
+                Da oltre trent'anni impastiamo la passione per la pizza artigianale con oltre 24 e 30 ore di lievitazione naturale. Più di 60 varianti da scoprire.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#menu" class="w-full sm:w-auto bg-casetta-gold hover:bg-casetta-goldHover text-casetta-bordeauxDark font-bold px-8 py-4 rounded-full text-base transition-all shadow-xl hover:shadow-casetta-gold/30 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-pizza-slice"></i>
+                    <span>SCOPRI IL MENÙ</span>
+                </a>
+
+                <a href="#storia" class="w-full sm:w-auto bg-casetta-bordeaux/80 hover:bg-casetta-bordeaux text-casetta-crema border border-casetta-gold/40 font-semibold px-8 py-4 rounded-full text-base transition-all flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-book-open"></i>
+                    <span>LA NOSTRA STORIA</span>
+                </a>
+            </div>
+
+            <!-- CARD HIGHLIGHTS RAPIDI -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto pt-8 border-t border-casetta-gold/20 text-left">
+                <div class="p-3 rounded-xl bg-casetta-bordeauxDark/60 border border-casetta-gold/15">
+                    <span class="block text-casetta-gold text-lg mb-1"><i class="fa-solid fa-clock-rotate-left"></i></span>
+                    <span class="block text-xs text-casetta-crema/60">Lievitazione</span>
+                    <span class="block text-sm font-bold text-casetta-crema">Oltre 24h & 30h</span>
+                </div>
+
+                <div class="p-3 rounded-xl bg-casetta-bordeauxDark/60 border border-casetta-gold/15">
+                    <span class="block text-casetta-gold text-lg mb-1"><i class="fa-solid fa-wheat-awn"></i></span>
+                    <span class="block text-xs text-casetta-crema/60">Nuovo Impasto</span>
+                    <span class="block text-sm font-bold text-casetta-crema">Multicereale Integrale</span>
+                </div>
+
+                <div class="p-3 rounded-xl bg-casetta-bordeauxDark/60 border border-casetta-gold/15">
+                    <span class="block text-casetta-gold text-lg mb-1"><i class="fa-solid fa-list-check"></i></span>
+                    <span class="block text-xs text-casetta-crema/60">Ampia Scelta</span>
+                    <span class="block text-sm font-bold text-casetta-crema">Oltre 60 Pizze</span>
+                </div>
+
+                <div class="p-3 rounded-xl bg-casetta-bordeauxDark/60 border border-casetta-gold/15">
+                    <span class="block text-casetta-gold text-lg mb-1"><i class="fa-solid fa-store"></i></span>
+                    <span class="block text-xs text-casetta-crema/60">Iconica Location</span>
+                    <span class="block text-sm font-bold text-casetta-crema">27 MQ di Gusto</span>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+
+    <!-- SEZIONE 1: LA STORIA -->
+    <section id="storia" class="py-20 px-4 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            
+            <!-- IMMAGINE O VALORIZZAZIONE GRAFICA -->
+            <div class="relative">
+                <div class="rounded-3xl overflow-hidden border-2 border-casetta-gold/30 shadow-2xl relative">
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=900&q=80" alt="La Casetta Pizzeria" class="w-full h-[480px] object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-casetta-bordeauxDark via-transparent to-transparent"></div>
+                    
+                    <div class="absolute bottom-6 left-6 right-6 p-6 rounded-2xl glass-card">
+                        <span class="text-casetta-gold font-brand text-xs uppercase tracking-widest block mb-1">Dagli anni '40 ad oggi</span>
+                        <h4 class="font-brand text-xl font-bold text-casetta-crema">Un luogo unico a Porto Sant'Elpidio</h4>
+                        <p class="text-xs text-casetta-crema/80 mt-1">27 mq carichi di memoria, tradizione e convivialità.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TESTO STORIA -->
+            <div>
+                <span class="text-casetta-gold font-brand text-xs uppercase tracking-widest block mb-2">I nostri primi 30 anni</span>
+                <h2 class="font-brand text-3xl sm:text-5xl font-extrabold text-casetta-crema mb-6 leading-tight">
+                    Sarà Piccola... <br>
+                    <span class="text-casetta-gold">Ma con una Grande Storia.</span>
+                </h2>
+
+                <div class="space-y-4 text-casetta-crema/90 text-sm sm:text-base leading-relaxed font-light">
+                    <p>
+                        Nata negli anni ’40/’50 come una piccola rimessa per gli attrezzi dei pescatori, La Casetta ha attraversato decenni di storia, cambiando volto insieme alle persone che l’hanno vissuta.
+                    </p>
+                    <p>
+                        Negli anni ’70 è diventata una casa, ospitando un’intera famiglia in soli <strong class="text-casetta-gold font-semibold">27 mq di grandezza</strong>. Poi, negli anni ’90, quella piccola struttura ha iniziato un nuovo capitolo trasformandosi in una delle pizzerie più caratteristiche di Porto Sant’Elpidio.
+                    </p>
+                    <p>
+                        In più di trent’anni, La Casetta è diventata un piccolo punto di riferimento del paese: non soltanto per le sue dimensioni così raccolte da renderla inconfondibile, ma soprattutto per la passione per la pizza e per la cura della qualità.
+                    </p>
+                </div>
+
+                <div class="mt-8 p-4 rounded-xl border-l-4 border-casetta-gold bg-casetta-bordeaux/60">
+                    <span class="font-brand text-casetta-gold font-bold text-base block uppercase tracking-wider">
+                        PICCOLA FUORI... GRANDE PER LA SUA STORIA!
+                    </span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- SEZIONE 2: GLI IMPASTI -->
+    <section id="impasti" class="py-20 bg-casetta-bordeaux/40 border-y border-casetta-gold/20 px-4">
+        <div class="max-w-7xl mx-auto">
+            
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-casetta-gold font-brand text-xs uppercase tracking-widest block mb-2">Tradizione & Innovazione</span>
+                <h2 class="font-brand text-3xl sm:text-5xl font-bold text-casetta-crema mb-4">Gli Impasti de La Casetta</h2>
+                <p class="text-casetta-crema/80 text-sm sm:text-base">
+                    Ricerca e dedizione sono i nostri punti di forza. Scopri i segreti della nostra digeribilità.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- CARD IMPASTO CLASSICO -->
+                <div class="glass-card p-8 rounded-3xl relative border border-casetta-gold/30 flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-casetta-gold/20 border border-casetta-gold/40 flex items-center justify-center text-casetta-gold text-2xl mb-6">
+                            <i class="fa-solid fa-wheat-bread"></i>
+                        </div>
+                        <span class="text-casetta-gold text-xs font-bold uppercase tracking-wider block mb-1">Lievitazione 24 Ore</span>
+                        <h3 class="font-brand text-2xl sm:text-3xl font-bold text-casetta-crema mb-4">Impasto Classico Aromatico</h3>
+                        <p class="text-casetta-crema/80 text-sm leading-relaxed mb-6">
+                            Il nostro impasto tradizionale nasce da oltre 24 ore di lievitazione controllata. Studiato per ottenere il perfetto equilibrio tra morbidezza al centro, croccantezza sul cornicione e una digeribilità impeccabile.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-casetta-gold/20 flex items-center justify-between text-xs text-casetta-gold">
+                        <span><i class="fa-solid fa-check mr-1"></i> Alta Leggerezza</span>
+                        <span><i class="fa-solid fa-check mr-1"></i> Gusto Bilanciato</span>
+                    </div>
+                </div>
+
+                <!-- CARD IMPASTO MULTICEREALE INTEGRALE -->
+                <div class="glass-card p-8 rounded-3xl relative border-2 border-casetta-gold shadow-xl flex flex-col justify-between">
+                    <div>
+                        <div class="absolute top-6 right-6 bg-casetta-gold text-casetta-bordeauxDark text-[10px] font-extrabold uppercase px-3 py-1 rounded-full">
+                            Nuovo Arrivato
+                        </div>
+                        <div class="w-14 h-14 rounded-2xl bg-casetta-gold text-casetta-bordeauxDark flex items-center justify-center text-2xl mb-6">
+                            <i class="fa-solid fa-seedling"></i>
+                        </div>
+                        <span class="text-casetta-gold text-xs font-bold uppercase tracking-wider block mb-1">Lievitazione 30 Ore</span>
+                        <h3 class="font-brand text-2xl sm:text-3xl font-bold text-casetta-crema mb-4">Multicereale Integrale</h3>
+                        <p class="text-casetta-crema/80 text-sm leading-relaxed mb-6">
+                            Frutto di circa un anno di studio e sperimentazione. Una miscela speciale con 5 cereali selezionati: <strong class="text-casetta-gold">Segale, Farro, Orzo, Riso e Avena</strong>. Maturazione di 30 ore per sfumature di gusto uniche e rustiche.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-casetta-gold/20 flex items-center justify-between text-xs text-casetta-gold">
+                        <span><i class="fa-solid fa-star mr-1"></i> 5 Cereali Selezionati</span>
+                        <span><i class="fa-solid fa-star mr-1"></i> Ricco di Fibre</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="text-center mt-12">
+                <span class="font-brand text-casetta-gold text-lg tracking-wider block">CHE DIRE... C'È SOLO DA PROVARLA!</span>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- SEZIONE 3: MENÙ INTERATTIVO CON RICERCA -->
+    <section id="menu" class="py-20 px-4 max-w-7xl mx-auto">
+        
+        <div class="text-center max-w-3xl mx-auto mb-12">
+            <span class="text-casetta-gold font-brand text-xs uppercase tracking-widest block mb-2">Sfoglia, Scegli, Gusta</span>
+            <h2 class="font-brand text-3xl sm:text-5xl font-bold text-casetta-crema mb-4">Il Nostro Menù</h2>
+            <p class="text-casetta-crema/80 text-sm sm:text-base mb-8">
+                Oltre 60 pizze preparate con ingredienti freschi. Utilizza la barra di ricerca o seleziona le categorie per trovare la tua preferita.
+            </p>
+
+            <!-- BARRA DI RICERCA LIVE -->
+            <div class="relative max-w-md mx-auto mb-8">
+                <input type="text" id="menu-search" onkeyup="searchPizza()" placeholder="Cerca pizza o ingrediente (es. pistacchio, bufala)..." 
+                       class="w-full bg-casetta-bordeauxDark border border-casetta-gold/40 rounded-full px-5 py-3 pl-12 text-sm text-casetta-crema placeholder-casetta-crema/40 focus:outline-none focus:border-casetta-gold transition-all shadow-inner">
+                <i class="fa-solid fa-magnifying-glass absolute left-4 top-3.5 text-casetta-gold text-sm"></i>
+            </div>
+
+            <!-- FILTRI CATEGORIA -->
+            <div class="flex flex-wrap justify-center gap-2 sm:gap-3">
+                <button onclick="filterMenu('all')" class="category-tab active px-5 py-2.5 rounded-full border border-casetta-gold/30 text-xs sm:text-sm font-medium transition-all">Tutte</button>
+                <button onclick="filterMenu('special')" class="category-tab px-5 py-2.5 rounded-full border border-casetta-gold/30 text-xs sm:text-sm font-medium transition-all"><i class="fa-solid fa-star text-amber-300 mr-1"></i> Le Speciali</button>
+                <button onclick="filterMenu('rosse')" class="category-tab px-5 py-2.5 rounded-full border border-casetta-gold/30 text-xs sm:text-sm font-medium transition-all">Pizze Rosse</button>
+                <button onclick="filterMenu('bianche')" class="category-tab px-5 py-2.5 rounded-full border border-casetta-gold/30 text-xs sm:text-sm font-medium transition-all">Pizze Bianche</button>
+                <button onclick="filterMenu('fritti')" class="category-tab px-5 py-2.5 rounded-full border border-casetta-gold/30 text-xs sm:text-sm font-medium transition-all">Sfizi & Fritti</button>
+            </div>
+        </div>
+
+        <!-- GRIGLIA PRODOTTI MENÙ -->
+        <div id="menu-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- ITEM 1: SPECIAL -->
+            <div class="menu-item glass-card rounded-2xl p-6 border border-casetta-gold/30 hover:border-casetta-gold transition-all group" data-category="special" data-keywords="pistacchio mortadella stracciatella speciale">
+                <div class="flex justify-between items-start mb-3">
+                    <div>
+                        <span class="bg-casetta-gold/20 text-casetta-gold text-[10px] font-bold px-2 py-0.5 rounded border border-casetta-gold/40 uppercase mb-1 inline-block">
+                            <i class="fa-solid fa-crown text-amber-300"></i> Speciale
+                        </span>
+                        <h3 class="font-brand text-2xl font-bold text-casetta-crema group-hover:text-casetta-gold transition-colors">La Casetta Gold</h3>
+                    </div>
+                    <span class="text-lg font-extrabold text-casetta-gold">€ 11.50</span>
+                </div>
+                <p class="text-casetta-crema/80 text-xs leading-relaxed mb-4">
+                    Mozzarella fior di latte, mortadella IGP, stracciatella pugliese fresca, granella di pistacchio di Bronte e pesto di basilico.
+                </p>
+                <div class="text-[11px] text-casetta-gold/80 italic border-t border-casetta-gold/15 pt-3">
+                    Consigliato con Impasto Multicereale Integrale
+                </div>
+            </div>
+
+            <!-- ITEM 2: ROSSA -->
+            <div class="menu-item glass-card rounded-2xl p-6 border border-casetta-gold/30 hover:border-casetta-gold transition-all group" data-category="rosse" data-keywords="margherita pomodoro mozzarella basilico classica">
+                <div class="flex justify-between items-start mb-3">
+                    <div>
+                        <span class="bg-red-900/40 text-red-300 text-[10px] font-bold px-2 py-0.5 rounded border border-red-500/30 uppercase mb-1 inline-block">
+                            Rossa Classica
+                        </span>
+                        <h3 class="font-brand text-2xl font-bold text-casetta-crema group-hover:text-casetta-gold transition-colors">Margherita D.O.P.</h3>
+                    </div>
+                    <span class="text-lg font-extrabold text-casetta-gold">€ 6.50</span>
+                </div>
+                <p class="text-casetta-crema/80 text-xs leading-relaxed mb-4">
+                    Polpa di pomodoro italiano, mozzarella fior di latte di Agerola, basilico fresco dell'orto e olio extravergine d'oliva.
+                </p>
+                <div class="text-[11px] text-casetta-gold/80 italic border-t border-casetta-gold/15 pt-3">
+                    Il grande classico dell'arte pizzaiola
+                </div>
+            </div>
+
+            <!-- ITEM 3: SPECIAL -->
+            <div class="menu-item glass-card rounded-2xl p-6 border border-casetta-gold/30 hover:border-casetta-gold transition-all group" data-category="special" data-keywords="tartufo porcini salsiccia fior di latte speciale">
+                <div class="flex justify-between items-start mb-3">
+                    <div>
+                        <span class="bg-casetta-gold/20 text-casetta-gold text-[10px] font-bold px-2 py-0.5 rounded border border-casetta-gold/40 uppercase mb-1 inline-block">
+                            <i class="fa-solid fa-crown text-amber-300"></i> Speciale
+                        </span>
+                        <h3 class="font-brand text-2xl font-bold text-casetta-crema group-hover:text-casetta-gold transition-colors">Bosco & Tartufo</h3>
+                    </div>
+                    <span class="text-lg font-extrabold text-casetta-gold">€ 12.00</span>
+                </div>
+                <p class="text-casetta-crema/80 text-xs leading-relaxed mb-4">
+                    Mozzarella fior di latte, salsa al tartufo nero marchigiano, funghi porcini trifolati e salsiccia fresca locale sgranata.
+                </p>
+                <div class="text-[11px] text-casetta-gold/80 italic border-t border-casetta-gold/15 pt-3">
+                    Profumo intenso dei nostri Sibillini
+                </div>
+            </div>
+
+            <!-- ITEM 4: BIANCHE -->
+            <div class="menu-item glass-card rounded-2xl p-6 border border-casetta-gold/30 hover:border-casetta-gold transition-all group" data-category="bianche" data-keywords="4 formaggi gorgonzola noci miele bianca">
+                <div class="flex justify-between items-start mb-3">
+                    <div>
+                        <span class="bg-amber-900/40 text-amber-200 text-[10px] font-bold px-2 py-0.5 rounded border border-amber-500/30 uppercase mb-1 inline-block">
+                            Pizza Bianca
+                        </span>
+                        <h3 class="font-brand text-2xl font-bold text-casetta-crema group-hover:text-casetta-gold transition-colors">Quattro Formaggi & Miele</h3>
+                    </div>
+                    <span class="text-lg font-extrabold text-casetta-gold">€ 9.50</span>
+                </div>
+                <p class="text-casetta-crema/80 text-xs leading-relaxed mb-4">
+                    Fior di latte, gorgonzola D.O.P., fontina, provola affumicata, gherigli di noci e filo di miele d'acacia locale.
+                </p>
+                <div class="text-[11px] text-casetta-gold/80 italic border-t border-casetta-gold/15 pt-3">
+                    Gusto dolce-salato avvolgente
+                </div>
+            </div>
+
+            <!-- ITEM 5: ROSSE -->
+            <div class="menu-item glass-card rounded-2xl p-6 border border-casetta-gold/30 hover:border-casetta-gold transition-all group" data-category="rosse" data-keywords="piccante diavola salame ventricina pomodoro">
+                <div class="flex justify-between items-start mb-3">
+                    <div>
+                        <span class="bg-red-900/40 text-red-300 text-[10px] font-bold px-2 py-0.5 rounded border border-red-500/30 uppercase mb-1 inline-block">
+                            Rossa Piccante
+                        </span>
+                        <h3 class="font-brand text-2xl font-bold text-casetta-crema group-hover:text-casetta-gold transition-colors">Diavola di Campagna</h3>
+                    </div>
+                    <span class="text-lg font-extrabold text-casetta-gold">€ 8.50</span>
+                </div>
+                <p class="text-casetta-crema/80 text-xs leading-relaxed mb-4">
+                    Pomodoro, fior di latte, ventricina piccante artigianale, olive nere e olio al peperoncino biologico.
+                </p>
+                <div class="text-[11px] text-casetta-gold/80 italic border-t border-casetta-gold/15 pt-3">
+                    Gusto deciso e vivace
+                </div>
+            </div>
+
+            <!-- ITEM 6: FRITTI -->
+            <div class="menu-item glass-card rounded-2xl p-6 border border-casetta-gold/30 hover:border-casetta-gold transition-all group" data-category="fritti" data-keywords="olive ascolana cremini patatine fritti fritto antipasto">
+                <div class="flex justify-between items-start mb-3">
+                    <div>
+                        <span class="bg-amber-900/40 text-amber-200 text-[10px] font-bold px-2 py-0.5 rounded border border-amber-500/30 uppercase mb-1 inline-block">
+                            Sfizio Artigianale
+                        </span>
+                        <h3 class="font-brand text-2xl font-bold text-casetta-crema group-hover:text-casetta-gold transition-colors">Gran Mix de La Casetta</h3>
+                    </div>
+                    <span class="text-lg font-extrabold text-casetta-gold">€ 8.00</span>
+                </div>
+                <p class="text-casetta-crema/80 text-xs leading-relaxed mb-4">
+                    Olive all'Ascolana fatte in casa, cremini fritti tradizionali marchigiani e patatine fritte dorate e croccanti.
+                </p>
+                <div class="text-[11px] text-casetta-gold/80 italic border-t border-casetta-gold/15 pt-3">
+                    Perfetto da condividere
+                </div>
+            </div>
+
+        </div>
+
+        <div id="no-results" class="hidden text-center py-12">
+            <i class="fa-solid fa-pizza-slice text-4xl text-casetta-gold/40 mb-3 block"></i>
+            <p class="text-casetta-crema/60 text-sm">Nessuna pizza trovata con questi ingredienti. Prova con un'altra ricerca!</p>
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER COMPLETO E INFO CONTATTI -->
+    <footer id="contatti" class="bg-casetta-bordeauxDark border-t-2 border-casetta-gold pt-16 pb-8 px-4">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+            
+            <!-- COL 1: BRAND -->
+            <div class="md:col-span-1">
+                <h3 class="font-brand text-3xl font-extrabold text-casetta-gold mb-3">LA CASETTA</h3>
+                <p class="text-xs text-casetta-crema/70 leading-relaxed mb-4">
+                    Pizzeria storica a Porto Sant'Elpidio. Passione per la qualità, impasti digeribili e l'accoglienza di sempre.
+                </p>
+                <div class="flex gap-4 text-casetta-gold text-lg">
+                    <a href="https://www.instagram.com/la_casettapse" target="_blank" rel="noopener" class="hover:scale-110 transition-transform"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.facebook.com" target="_blank" rel="noopener" class="hover:scale-110 transition-transform"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.tiktok.com" target="_blank" rel="noopener" class="hover:scale-110 transition-transform"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+
+            <!-- COL 2: ORARI APERTURA -->
+            <div>
+                <h4 class="font-brand text-sm font-bold text-casetta-gold uppercase tracking-wider mb-4">Quando Siamo Aperti?</h4>
+                <ul class="text-xs text-casetta-crema/80 space-y-2.5">
+                    <li class="flex justify-between border-b border-casetta-gold/10 pb-1">
+                        <span>Martedì - Domenica:</span>
+                        <strong class="text-casetta-crema">16:30 - 21:30</strong>
+                    </li>
+                    <li class="flex justify-between text-red-400">
+                        <span>Giorno di Chiusura:</span>
+                        <strong>Lunedì</strong>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- COL 3: DOVE TROVARCI -->
+            <div>
+                <h4 class="font-brand text-sm font-bold text-casetta-gold uppercase tracking-wider mb-4">Dove Trovarci?</h4>
+                <p class="text-xs text-casetta-crema/80 leading-relaxed mb-3">
+                    📍 <strong>Via Umberto I, 642</strong><br>
+                    63821 Porto Sant'Elpidio (FM), Italia
+                </p>
+                <a href="https://www.google.com/maps/search/?api=1&query=La+Casetta+Porto+Sant'Elpidio" target="_blank" rel="noopener" 
+                   class="inline-flex items-center gap-2 text-xs text-casetta-gold hover:underline font-semibold">
+                    <span>Apri Mappa Google Maps</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                </a>
+            </div>
+
+            <!-- COL 4: ORDINAZIONI ASPORTO -->
+            <div>
+                <h4 class="font-brand text-sm font-bold text-casetta-gold uppercase tracking-wider mb-4">Ordina la tua Pizza</h4>
+                <p class="text-xs text-casetta-crema/80 mb-4">Chiama per ordinare d'asporto ed evitare attese.</p>
+                
+                <a href="tel:+390734902181" class="w-full bg-casetta-gold hover:bg-casetta-goldHover text-casetta-bordeauxDark font-bold py-3 px-4 rounded-xl text-xs transition-all flex items-center justify-center gap-2 shadow-lg">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>+39 0734 902181</span>
+                </a>
+                <p class="text-[10px] text-casetta-crema/50 text-center mt-2">Email: lacasettapse@gmail.com</p>
+            </div>
+
+        </div>
+
+        <div class="max-w-7xl mx-auto pt-8 border-t border-casetta-gold/20 text-center text-xs text-casetta-crema/50">
+            <p>&copy; 2026 La Casetta pse. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+
+
+    <!-- JAVASCRIPT PER INTERATTIVITÀ MENÙ E RICERCA -->
+    <script>
+        // Funzione per filtrare le categorie del Menù
+        function filterMenu(category) {
+            const items = document.querySelectorAll('.menu-item');
+            const tabs = document.querySelectorAll('.category-tab');
+            const searchInput = document.getElementById('menu-search');
+
+            // Azzera il campo di ricerca quando si cambia scheda
+            if (searchInput) searchInput.value = '';
+
+            tabs.forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+
+            let visibleCount = 0;
+
+            items.forEach(item => {
+                if (category === 'all' || item.dataset.category === category) {
+                    item.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            checkNoResults(visibleCount);
+        }
+
+        // Funzione di Ricerca per Nome / Ingrediente
+        function searchPizza() {
+            const query = document.getElementById('menu-search').value.toLowerCase().trim();
+            const items = document.querySelectorAll('.menu-item');
+            let visibleCount = 0;
+
+            items.forEach(item => {
+                const keywords = item.dataset.keywords ? item.dataset.keywords.toLowerCase() : '';
+                const textContent = item.textContent.toLowerCase();
+
+                if (textContent.includes(query) || keywords.includes(query)) {
+                    item.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            checkNoResults(visibleCount);
+        }
+
+        // Verifica se mostrare messaggio "Nessun Risultato"
+        function checkNoResults(count) {
+            const noResults = document.getElementById('no-results');
+            if (count === 0) {
+                noResults.classList.remove('hidden');
+            } else {
+                noResults.classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
